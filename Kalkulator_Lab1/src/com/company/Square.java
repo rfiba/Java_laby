@@ -23,6 +23,6 @@ public class Square extends Figure implements Print {
     @Override
     public void print() {
         System.out.format("Side of square: %f\n", side);
-        System.out.format("Area and perimeter of square: %f, %f", calculateArea(), calculatePerimeter());
+        System.out.format("Area and perimeter of square\n: %f, %f", calculateArea(), calculatePerimeter());
     }
 }

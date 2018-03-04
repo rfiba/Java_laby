@@ -24,6 +24,6 @@ public class Circle extends Figure implements Print {
     @Override
     public void print() {
         System.out.format("Radius of circle: %f\n", radius);
-        System.out.format("Area and perimeter of circle: %f, %f", calculateArea(), calculatePerimeter());
+        System.out.format("Area and perimeter of circle\n: %f, %f", calculateArea(), calculatePerimeter());
     }
 }
