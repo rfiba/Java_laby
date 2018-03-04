@@ -7,5 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Triangle t = new Triangle(5,5,5);
 	    t.print();
+	    Square some = new Square(4);
+	    some.print();
     }
 }
