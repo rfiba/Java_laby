@@ -3,8 +3,10 @@ package com.company;
 public class Square extends Figure implements Print {
     private double side;
 
-    Square(double sideToAdd)
+    Square(double sideToAdd) throws IllegalArgumentException
     {
+        if(sideToAdd < 0)
+            throw new IllegalArgumentException("Argument < 0");
         side = sideToAdd;
     }
 

@@ -5,9 +5,16 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        Triangle t = new Triangle(5,5,5);
-	    t.print();
-	    Square some = new Square(4);
+        Square t;
+        try {
+            t = new Square(-5);
+        }
+        catch(IllegalArgumentException e)
+        {
+            System.out.println("Error: " + e);
+        }
+        //t.print();
+	    Triangle some = new Triangle(4,4,4);
 	    some.print();
     }
 }
