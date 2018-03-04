@@ -5,7 +5,7 @@ public class Circle extends Figure implements Print {
 
     Circle(double radiusToAdd) throws IllegalArgumentException
     {
-        if(radiusToAdd < 0)
+        if (radiusToAdd < 0)
             throw new IllegalArgumentException("Argument < 0");
 
         radius = radiusToAdd;

@@ -1,11 +1,12 @@
 package com.company;
 
 public class Triangle extends Figure implements Print {
-    private double aSide, bSide, cSide;
+    private double aSide;
+    private double bSide;
+    private double cSide;
 
-    Triangle(double aSideToAdd, double bSideToAdd, double cSideToAdd) throws IllegalArgumentException
-    {
-        if(aSideToAdd < 0 || bSideToAdd < 0 || cSideToAdd < 0 )
+    Triangle(double aSideToAdd, double bSideToAdd, double cSideToAdd) throws IllegalArgumentException {
+        if (aSideToAdd < 0 || bSideToAdd < 0 || cSideToAdd < 0 )
             throw new IllegalArgumentException("Argument < 0");
         aSide = aSideToAdd;
         bSide = bSideToAdd;

@@ -26,23 +26,21 @@ public class Main {
                     Triangle t;
                     try{
                         t = new Triangle(aSide, bSide, cSide);
-                    }
-                    catch(IllegalArgumentException e){
+                    } catch(IllegalArgumentException e){
                         System.out.println("Error: " + e);
                         break;
                     }
-
                     t.print();
                     break;
                 case 2:
                     System.out.println("Give value of side:");
                     int side;
                     side = scanner.nextInt();
+
                     Square s;
-                    try{
+                    try {
                         s = new Square(side);
-                    }
-                    catch(IllegalArgumentException e){
+                    } catch (IllegalArgumentException e) {
                        System.out.println("Error: " + e);
                        break;
                     }
@@ -52,11 +50,11 @@ public class Main {
                     System.out.println("Give value of radius:");
                     int radius;
                     radius = scanner.nextInt();
+
                     Circle c;
-                    try{
+                    try {
                         c = new Circle(radius);
-                    }
-                    catch(IllegalArgumentException e){
+                    } catch (IllegalArgumentException e) {
                         System.out.println("Error: " + e);
                         break;
                     }
@@ -65,11 +63,10 @@ public class Main {
                 case 4:
                     condition = false;
                     break;
-                    default:
+                default:
                     System.out.println("Unknown command. Try again.");
                     break;
             }
-
         }
     }
 }
