@@ -1,5 +1,5 @@
 package com.company;
 
-public interface Print{
+interface Print{
     void print();
 }

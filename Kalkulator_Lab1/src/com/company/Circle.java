@@ -1,12 +1,12 @@
 package com.company;
 
-public class Circle extends Figure implements Print {
+class Circle extends Figure implements Print {
     private double radius;
 
     Circle(double radiusToAdd) throws IllegalArgumentException
     {
-        if (radiusToAdd < 0)
-            throw new IllegalArgumentException("Argument < 0");
+        if (radiusToAdd <= 0)
+            throw new IllegalArgumentException("Argument <= 0");
 
         radius = radiusToAdd;
     }
@@ -24,6 +24,6 @@ public class Circle extends Figure implements Print {
     @Override
     public void print() {
         System.out.format("Radius of circle: %f\n", radius);
-        System.out.format("Area and perimeter of circle\n: %f, %f", calculateArea(), calculatePerimeter());
+        System.out.format("Area and perimeter of circle: %f, %f\n", calculateArea(), calculatePerimeter());
     }
 }
