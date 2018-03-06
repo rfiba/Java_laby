@@ -8,14 +8,19 @@ class Triangle extends Figure implements Print {
     Triangle(double aSideToAdd, double bSideToAdd, double cSideToAdd) throws IllegalArgumentException {
         if (aSideToAdd <= 0 || bSideToAdd <= 0 || cSideToAdd <= 0 )
             throw new IllegalArgumentException("Argument <= 0");
+
+        if(aSideToAdd + bSideToAdd  < cSideToAdd || aSideToAdd + cSideToAdd < bSideToAdd || bSideToAdd + cSideToAdd < aSideToAdd)
+            throw new IllegalArgumentException("Argument condition");
+
         aSide = aSideToAdd;
         bSide = bSideToAdd;
         cSide = cSideToAdd;
     }
 
+
     @Override
     double calculateArea() {
-        double perimeter = calculatePerimeter();
+        double perimeter = calculatePerimeter()/2;
         return java.lang.Math.sqrt(perimeter*(perimeter-aSide)*(perimeter-bSide)*(perimeter-cSide));
     }
 
