@@ -1,6 +1,6 @@
 package com.company;
 
-public class Item implements java.lang.Comparable<Item>{
+public class Item implements java.lang.Comparable<Item> {
     private String name;
     private ItemCondition state;
     private double weight;
@@ -47,4 +47,9 @@ public class Item implements java.lang.Comparable<Item>{
     public int compareTo(Item o) {
             return name.compareTo(o.name);
     }
+
+    String getName() {
+        return name;
+    }
+
 }
