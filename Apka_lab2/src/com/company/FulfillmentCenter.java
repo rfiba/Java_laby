@@ -64,6 +64,15 @@ public class FulfillmentCenter {
         itemList.sort(Item::compareTo);
     }
 
+    void sortByAmount() {
+        itemList.sort(new Comparator<Item>() {
+            @Override
+            public  int compare(Item o1, Item o2) {
+                return -Integer.compare(o1.getAmount(), o2.getAmount());
+            }
+        });
+    }
+
     Item max() {
         return Collections.max(itemList, new Comparator<Item>() {
             @Override
@@ -71,5 +80,11 @@ public class FulfillmentCenter {
                 return Integer.compare(o1.getAmount(), o2.getAmount());
             }
         });
+    }
+
+    void summary() {
+        for (Item v: itemList) {
+            v.print();
+        }
     }
 }
