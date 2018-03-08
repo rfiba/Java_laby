@@ -87,4 +87,13 @@ public class FulfillmentCenter {
             v.print();
         }
     }
+
+    int countByCondition(ItemCondition toCount) {
+        int counter = 0;
+        for (Item it : itemList) {
+            if (it.getState() == toCount)
+                counter++;
+        }
+        return counter;
+    }
 }

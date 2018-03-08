@@ -39,6 +39,10 @@ public class Item implements java.lang.Comparable<Item>{
         amount--;
     }
 
+    ItemCondition getState() {
+        return state;
+    }
+
     @Override
     public int compareTo(Item o) {
             return name.compareTo(o.name);
