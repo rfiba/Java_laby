@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -38,6 +40,36 @@ public class FulfillmentCenter {
         int it = itemList.indexOf(toGet);
         if (it == -1)
             throw new IllegalArgumentException("Cannot get. Item unfound");
-        
+
+        if (itemList.get(it).getAmount() ==1)
+            itemList.remove(it);
+
+        itemList.get(it).decrease();
+        return itemList.get(it);
+    }
+
+    Item removeProduct(Item toRemove) {
+        int it = itemList.indexOf(toRemove);
+        if (it == -1)
+            throw new IllegalArgumentException("Cannot remove. Item unfound");
+
+        return itemList.remove(it);
+    }
+
+    Item search(String toFind) {
+     return null;
+    }
+
+    void sortByName() {
+        itemList.sort(Item::compareTo);
+    }
+
+    Item max() {
+        return Collections.max(itemList, new Comparator<Item>() {
+            @Override
+            public  int compare(Item o1, Item o2) {
+                return Integer.compare(o1.getAmount(), o2.getAmount());
+            }
+        });
     }
 }
