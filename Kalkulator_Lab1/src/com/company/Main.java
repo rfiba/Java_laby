@@ -24,12 +24,9 @@ public class Main {
                     cSide = scanner.nextInt();
 
                     Triangle t;
-                    try{
-                        t = new Triangle(aSide, bSide, cSide);
-                    } catch(IllegalArgumentException e){
-                        System.out.println("Error: " + e);
-                        break;
-                    }
+
+                    t = new Triangle(aSide, bSide, cSide);
+                    
                     t.print();
                     break;
                 case 2:

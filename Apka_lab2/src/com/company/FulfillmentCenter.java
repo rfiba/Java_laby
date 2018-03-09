@@ -57,20 +57,26 @@ public class FulfillmentCenter {
     }
 
     Item search(String toFind) {
-        return null;
+        sortByName();
+        Item a = new Item(toFind, ItemCondition.NEW, 0 ,0);
+        return itemList.get(java.util.Collections.binarySearch(itemList, a, (o1, o2) -> {
+            return o1.getName().compareTo(o2.getName());
+        }));
     }
 
-    void sortByName() {
+    List<Item> sortByName() {
         itemList.sort(Item::compareTo);
+        return itemList;
     }
 
-    void sortByAmount() {
+    List<Item> sortByAmount() {
         itemList.sort(new Comparator<Item>() {
             @Override
             public  int compare(Item o1, Item o2) {
                 return -Integer.compare(o1.getAmount(), o2.getAmount());
             }
         });
+        return itemList;
     }
 
     Item max() {
