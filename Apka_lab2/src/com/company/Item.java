@@ -17,7 +17,8 @@ public class Item implements java.lang.Comparable<Item> {
     }
 
     void print() {
-        System.out.format("Name: %s, weight: %f, amount: %d " + state, name, weight, amount);
+        System.out.format("Name: %s, weight: %f, amount: %d, sate: " + state, name, weight, amount);
+        System.out.println();
     }
 
     double getWeight() {

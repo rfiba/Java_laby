@@ -1,9 +1,6 @@
 package com.company;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class FulfillmentCenter {
     private String name;
@@ -18,11 +15,11 @@ public class FulfillmentCenter {
         name = nameToAdd;
         capacity = capacityToAdd;
         currentWeight = 0;
-        List<Item> itemList = new LinkedList<>();
+        itemList = new LinkedList<>();
     }
 
     void addProduct(Item toAdd) {
-        if (currentWeight + toAdd.getWeight() <= capacity)
+        if (currentWeight + (toAdd.getWeight() * toAdd.getAmount()) >= capacity)
             throw new IllegalArgumentException("Cannot add. Lack of capacity");
 
         int it = itemList.indexOf(toAdd);
@@ -30,10 +27,9 @@ public class FulfillmentCenter {
         if (it == -1) {
             itemList.add(toAdd);
         } else {
-            itemList.get(it).increaseWeight(toAdd.getWeight());
+            itemList.get(it).increaseWeight(toAdd.getWeight()*toAdd.getAmount());
             itemList.get(it).increase();
         }
-
     }
 
     Item getProduct(Item toGet) {
