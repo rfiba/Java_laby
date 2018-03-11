@@ -30,4 +30,12 @@ public class FulfillmentCenterContainer {
         }
         return listOfCenters;
     }
+
+    void summary() {
+        Set<Map.Entry<String,FulfillmentCenter>> entrySet = map.entrySet();
+        for (Map.Entry<String,FulfillmentCenter> it: entrySet) {
+            System.out.print("Name: " + it.getKey());
+            System.out.println(" " + it.getValue().getFilling());
+        }
+    }
 }
