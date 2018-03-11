@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Objects;
+
 public class Item implements java.lang.Comparable<Item> {
     private String name;
     private ItemCondition state;
@@ -53,4 +55,20 @@ public class Item implements java.lang.Comparable<Item> {
         return name;
     }
 
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(name, state, weight, amount);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return Double.compare(item.weight, weight) == 0 &&
+                amount == item.amount &&
+                Objects.equals(name, item.name) &&
+                state == item.state;
+    }
 }

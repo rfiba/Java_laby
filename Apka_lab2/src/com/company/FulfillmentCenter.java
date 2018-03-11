@@ -37,7 +37,7 @@ public class FulfillmentCenter {
         if (it == -1)
             throw new IllegalArgumentException("Cannot get. Item unfound");
 
-        if (itemList.get(it).getAmount() ==1)
+        if (itemList.get(it).getAmount() == 1)
             itemList.remove(it);
 
         itemList.get(it).decrease();

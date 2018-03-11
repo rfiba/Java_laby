@@ -1,5 +1,19 @@
 package com.company;
 
 enum ItemCondition{
-    NEW, USED, REFURBISHED
+    NEW {
+        @Override public String toString() {
+            return "new";
+        }
+    },
+    USED {
+        @Override public String toString() {
+            return "used";
+        }
+    },
+    REFURBISHED {
+        @Override public String toString() {
+            return "refurbished";
+        }
+    },
 }

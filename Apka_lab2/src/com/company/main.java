@@ -12,9 +12,11 @@ public class main {
         test.addProduct(new Item("Cham", ItemCondition.USED, 3,5));
         test.sortByName();
         test.summary();
+        System.out.println();
         test.sortByAmount();
         test.summary();
         System.out.println(test.countByCondition(ItemCondition.USED));
-
+        test.getProduct(new Item("Cham", ItemCondition.USED, 3,5));
+        test.summary();
     }
 }
