@@ -18,5 +18,10 @@ public class main {
         System.out.println(test.countByCondition(ItemCondition.USED));
         test.getProduct(new Item("Cham", ItemCondition.USED, 3,5));
         test.summary();
+        System.out.println();
+        List<Item> temp = test.searchPartial("C");
+        for (Item it : temp) {
+            it.print();
+        }
     }
 }

@@ -60,6 +60,15 @@ public class FulfillmentCenter {
         }));
     }
 
+    List<Item> searchPartial(String toFind) {
+        List<Item> temp = new LinkedList<Item>();
+        for (Item it : itemList) {
+            if (it.getName().indexOf(toFind) == 0)
+                temp.add(it);
+        }
+        return temp;
+    }
+
     List<Item> sortByName() {
         itemList.sort(Item::compareTo);
         return itemList;
