@@ -23,7 +23,13 @@ public class main {
         for (Item it : temp) {
             it.print();
         }
-
-        
+        System.out.println();
+        FulfillmentCenterContainer a = new FulfillmentCenterContainer();
+        a.addCenter("Glowny", 500);
+        a.addCenter("Redgs",453);
+        List<FulfillmentCenter> tmp = a.findEmpty();
+        a.summary();
+        a.removeCenter("Glowny");
+        a.summary();
     }
 }

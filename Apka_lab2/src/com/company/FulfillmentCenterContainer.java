@@ -20,8 +20,10 @@ public class FulfillmentCenterContainer {
         map.remove(centerName);
     }
 
-    List<FulfillmentCenter> findEmpty()
-    {
+    List<FulfillmentCenter> findEmpty() {
+        if (map.isEmpty())
+            throw new IllegalArgumentException("Map is empty");
+
         List<FulfillmentCenter> listOfCenters = new LinkedList<FulfillmentCenter>();
         Set<Map.Entry<String,FulfillmentCenter>> entrySet = map.entrySet();
         for (Map.Entry<String,FulfillmentCenter> it: entrySet) {
