@@ -107,4 +107,13 @@ public class FulfillmentCenter {
         }
         return counter;
     }
+
+    double getFilling()
+    {
+        double filling = 0;
+        for (Item it : itemList) {
+            filling += it.getAmount() * it.getWeight();
+        }
+        return filling/capacity;
+    }
 }
