@@ -9,14 +9,19 @@ public class main {
         test.addProduct(new Item("Ere", ItemCondition.NEW, 1, 3));
         test.addProduct(new Item("Rsdfam", ItemCondition.USED, 3,5));
         test.addProduct(new Item("Qwam", ItemCondition.USED, 3,5));
-        test.addProduct(new Item("Cham", ItemCondition.USED, 3,5));
-        test.sortByName();
-        test.summary();
+        test.addProduct(new Item("Ctam", ItemCondition.USED, 3,5));
+        List<Item> tmp = test.sortByAmount();
+        for (Item it : tmp) {
+            it.print();
+        }
+
         System.out.println();
-        test.sortByAmount();
-        test.summary();
+        tmp = test.sortByName();
+        for (Item it : tmp) {
+            it.print();
+        }
         System.out.println(test.countByCondition(ItemCondition.USED));
-        test.getProduct(new Item("Cham", ItemCondition.USED, 3,5));
+        test.getProduct(new Item("Ctam", ItemCondition.USED, 3,5));
         test.summary();
         System.out.println();
         List<Item> temp = test.searchPartial("C");
@@ -27,8 +32,7 @@ public class main {
         FulfillmentCenterContainer a = new FulfillmentCenterContainer();
         a.addCenter("Glowny", 500);
         a.addCenter("Redgs",453);
-        List<FulfillmentCenter> tmp = a.findEmpty();
-        a.summary();
+
         a.removeCenter("Glowny");
         a.summary();
     }

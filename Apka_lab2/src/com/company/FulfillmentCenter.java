@@ -70,18 +70,20 @@ public class FulfillmentCenter {
     }
 
     List<Item> sortByName() {
-        itemList.sort(Item::compareTo);
-        return itemList;
+        List<Item> tmp = new LinkedList<>(itemList);
+        tmp.sort(Item::compareTo);
+        return tmp;
     }
 
     List<Item> sortByAmount() {
-        itemList.sort(new Comparator<Item>() {
+        List<Item> tmp = new LinkedList<>(itemList);
+        tmp.sort(new Comparator<Item>() {
             @Override
             public  int compare(Item o1, Item o2) {
                 return -Integer.compare(o1.getAmount(), o2.getAmount());
             }
         });
-        return itemList;
+        return tmp;
     }
 
     Item max() {
