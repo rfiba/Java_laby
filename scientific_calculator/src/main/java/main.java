@@ -5,7 +5,7 @@ public class main {
     {
        SwingUtilities.invokeLater(new Runnable() {
            public void run() {
-               new mainWindow().setVisible(true);
+               new Window().setVisible(true);
            }
        });
     }
