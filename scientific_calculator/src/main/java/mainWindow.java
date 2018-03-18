@@ -1,12 +1,17 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class mainWindow extends JFrame {
+public class mainWindow extends JFrame implements ActionListener {
     private JPanel mainPanel;
     private JTextArea textArea1;
     private JButton button1;
     private JList list1;
     private JTextField textField1;
+    private JMenuBar menuBar;
+    private JMenu menu;
+    private JMenuItem menuItems[];
 
     public mainWindow() throws HeadlessException {
         mainPanel = new JPanel();
@@ -14,14 +19,39 @@ public class mainWindow extends JFrame {
         mainPanel.add(button1);
         mainPanel.add(list1);
         mainPanel.add(textField1);
-        MenuBar menu = new MenuBar();
-        setJMenuBar(menu.getMenuBar());
+
+        menuBar = new JMenuBar();
+        menuItems = new JMenuItem[2];
+        menuItems[0] = new JMenuItem("Reset");
+        menuItems[1] = new JMenuItem("Exit");
+        menu = new JMenu("Options");
+
+        for (JMenuItem it : menuItems) {
+            menu.add(it);
+            it.addActionListener(this);
+        }
+        menuBar.add(menu);
         add(mainPanel);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(250, 250);
         list1.setFixedCellWidth(100);
+        setJMenuBar(menuBar);
 
+    }
+
+
+    public void actionPerformed(ActionEvent e) {
+        String comStr = e.getActionCommand();
+
+        if (comStr.equals("Exit"))
+            System.exit(0);
+
+        if (comStr.equals("Reset"))
+        {
+            textArea1.setText(null);
+            textField1.setText(null);
+        }
     }
 
     {
