@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.text.MessageFormat;
 import javax.swing.*;
 import com.intellij.uiDesigner.core.*;
 /*
@@ -26,9 +27,11 @@ public class Window extends JFrame {
     }
 
     private void button1ActionPerformed(ActionEvent e) {
-        textArea1.append(textField1.getText() + "\n");
+        textArea1.append(textField1.getText());
         textField1.setText(null);
     }
+
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
