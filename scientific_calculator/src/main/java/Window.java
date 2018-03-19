@@ -3,6 +3,7 @@ import java.awt.event.*;
 import java.text.MessageFormat;
 import javax.swing.*;
 import com.intellij.uiDesigner.core.*;
+import org.mariuszgromada.math.mxparser.*;
 /*
  * Created by JFormDesigner on Sun Mar 18 23:10:50 CET 2018
  */
@@ -27,7 +28,8 @@ public class Window extends JFrame {
     }
 
     private void button1ActionPerformed(ActionEvent e) {
-        textArea1.append(textField1.getText());
+        Expression exp = new Expression(textField1.getText());
+        textArea1.append("" + exp.calculate());
         textField1.setText(null);
     }
 
@@ -79,6 +81,7 @@ public class Window extends JFrame {
             menuBar1.add(menu1);
         }
         setJMenuBar(menuBar1);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //======== scrollPane2 ========
         {
