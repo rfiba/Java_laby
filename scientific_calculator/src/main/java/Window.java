@@ -25,6 +25,11 @@ public class Window extends JFrame {
         System.exit(0);
     }
 
+    private void button1ActionPerformed(ActionEvent e) {
+        textArea1.append(textField1.getText() + "\n");
+        textField1.setText(null);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Rafa FI
@@ -38,7 +43,7 @@ public class Window extends JFrame {
         list1 = new JList();
         textField1 = new JTextField();
         button1 = new JButton();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         //======== this ========
         Container contentPane = getContentPane();
         contentPane.setLayout(new GridLayoutManager(2, 2, new Insets(0, 0, 0, 0), -1, -1));
@@ -105,6 +110,11 @@ public class Window extends JFrame {
 
         //---- button1 ----
         button1.setText("Evaluate");
+        button1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                button1ActionPerformed(e);
+            }
+        });
         contentPane.add(button1, new GridConstraints(1, 1, 1, 1,
             GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
