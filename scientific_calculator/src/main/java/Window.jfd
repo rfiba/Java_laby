@@ -8,6 +8,7 @@ new FormModel {
 			"$rowCount": 2
 		} ) {
 			name: "this"
+			"$sizePolicy": 1
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane2"
 				add( new FormComponent( "javax.swing.JTextArea" ) {
@@ -19,19 +20,31 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
+				"maximumSize": new java.awt.Dimension( 100, -1 )
+				"minimumSize": new java.awt.Dimension( 100, -1 )
 				add( new FormComponent( "javax.swing.JList" ) {
 					name: "list1"
+					"selectionMode": 1
 				} )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"column": 1
-				"fill": 3
+				"hSizePolicy": 0
+				"useParentLayout": true
+				"preferredSize": new java.awt.Dimension( 50, -1 )
+				"maximumSize": new java.awt.Dimension( 50, -1 )
+				"anchor": 4
+				"minimumSize": new java.awt.Dimension( 50, -1 )
+				"vSizePolicy": 0
+				"fill": 2
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textField1"
 				"horizontalAlignment": 2
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"row": 1
-				"fill": 3
+				"fill": 1
+				"anchor": 2
+				"vSizePolicy": 0
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button1"
@@ -59,8 +72,8 @@ new FormModel {
 				} )
 			}
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 400, 300 )
+			"location": new java.awt.Point( 0, 25 )
+			"size": new java.awt.Dimension( 500, 430 )
 		} )
 	}
 }

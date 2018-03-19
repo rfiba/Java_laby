@@ -4,6 +4,7 @@ import java.text.MessageFormat;
 import javax.swing.*;
 import com.intellij.uiDesigner.core.*;
 import org.mariuszgromada.math.mxparser.*;
+import javax.swing.DefaultListModel;
 /*
  * Created by JFormDesigner on Sun Mar 18 23:10:50 CET 2018
  */
@@ -29,7 +30,8 @@ public class Window extends JFrame {
 
     private void button1ActionPerformed(ActionEvent e) {
         Expression exp = new Expression(textField1.getText());
-        textArea1.append("" + exp.calculate());
+        String result = MessageFormat.format("{0} = {1}\n----\n",textField1.getText(), exp.calculate());
+        textArea1.append(result);
         textField1.setText(null);
     }
 
@@ -63,6 +65,7 @@ public class Window extends JFrame {
                 //---- menuItem1 ----
                 menuItem1.setText("Reset");
                 menuItem1.addActionListener(new ActionListener() {
+                    @Override
                     public void actionPerformed(ActionEvent e) {
                         menuItem1ActionPerformed(e);
                     }
@@ -72,6 +75,7 @@ public class Window extends JFrame {
                 //---- menuItem2 ----
                 menuItem2.setText("Exit");
                 menuItem2.addActionListener(new ActionListener() {
+                    @Override
                     public void actionPerformed(ActionEvent e) {
                         menuItem2ActionPerformed(e);
                     }
@@ -81,7 +85,6 @@ public class Window extends JFrame {
             menuBar1.add(menu1);
         }
         setJMenuBar(menuBar1);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //======== scrollPane2 ========
         {
@@ -98,25 +101,31 @@ public class Window extends JFrame {
 
         //======== scrollPane1 ========
         {
+            scrollPane1.setMaximumSize(new Dimension(100, -1));
+            scrollPane1.setMinimumSize(new Dimension(100, -1));
+
+            //---- list1 ----
+            list1.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
             scrollPane1.setViewportView(list1);
         }
         contentPane.add(scrollPane1, new GridConstraints(0, 1, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_VERTICAL,
+            GridConstraints.SIZEPOLICY_FIXED,
+            GridConstraints.SIZEPOLICY_FIXED,
+            null, null, null, 0, true));
 
         //---- textField1 ----
         textField1.setHorizontalAlignment(SwingConstants.LEFT);
         contentPane.add(textField1, new GridConstraints(1, 0, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
+            GridConstraints.ANCHOR_SOUTH, GridConstraints.FILL_HORIZONTAL,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_FIXED,
             null, null, null));
 
         //---- button1 ----
         button1.setText("Evaluate");
         button1.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 button1ActionPerformed(e);
             }
@@ -126,9 +135,25 @@ public class Window extends JFrame {
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
-        pack();
+        setSize(500, 430);
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        DefaultListModel<FunctionName> listModel = new DefaultListModel<FunctionName>();
+        listModel.addElement(new FunctionName("Sinus", "sin()"));
+        listModel.addElement(new FunctionName("Cosinus", "cos()"));
+        listModel.addElement(new FunctionName("Tangens", "tg()"));
+        listModel.addElement(new FunctionName("Cotangens", "ctg()"));
+        listModel.addElement(new FunctionName("Logarithm", "lg()"));
+
+
+        list1 = new JList<FunctionName>(listModel);
+   
+
+        scrollPane1.add(list1);
+        scrollPane1.setViewportView(list1);
+
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
