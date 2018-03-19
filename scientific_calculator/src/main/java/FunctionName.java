@@ -6,4 +6,10 @@ public class FunctionName {
         name = nameToAdd;
         parserName = parserNameToAdd;
     }
+
+    @Override
+    public String toString()
+    {
+        return name;
+    }
 }
