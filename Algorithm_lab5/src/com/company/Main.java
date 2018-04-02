@@ -18,7 +18,7 @@ public class Main {
         int[] array = new int[3];
         array[0] = 3;
         array[1] = 5;
-        array[2] = 1;
+        array[2] = -1;
         System.out.println(MyArray.solution(array));
 
     }
