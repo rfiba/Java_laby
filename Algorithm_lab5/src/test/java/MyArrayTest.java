@@ -1,14 +1,14 @@
 package com.company;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class MyArrayTest {
+public class MyArrayTest {
 
     @Test
-    void solution_NullArray_ThrownException() {
+    public void solution_NullArray_ThrownException() {
 
         NullPointerException exception = assertThrows(NullPointerException.class, () -> {
             MyArray.solution(null);
@@ -17,7 +17,7 @@ class MyArrayTest {
     }
 
     @Test
-    void solution_EmptyArray_ThrownException() {
+    public void solution_EmptyArray_ThrownException() {
         int []array = new int[3];
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             MyArray.solution(array);
@@ -26,7 +26,7 @@ class MyArrayTest {
     }
 
     @Test
-    void solution_ToBigArray_ThrownException() {
+    public void solution_ToBigArray_ThrownException() {
         int []array = new int[12];
         array[11] = 1;
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -36,7 +36,7 @@ class MyArrayTest {
     }
 
     @Test
-    void solution_InvalidValues_ThrownException() {
+    public void solution_InvalidValues_ThrownException() {
         int []array = new int[2];
         array[0] = -1;
         array[1] = 1;
@@ -47,7 +47,7 @@ class MyArrayTest {
     }
 
     @Test
-    void solution_ToBigResult_ThrownException() {
+    public void solution_ToBigResult_ThrownException() {
         int []array = new int[10];
         for (int i = 0; i < 10; i++)
             array[i] = 9;
@@ -59,7 +59,7 @@ class MyArrayTest {
     }
 
     @Test
-    void solution_ToSmallResult_ThrownException() {
+    public void solution_ToSmallResult_ThrownException() {
         int []array = new int[10];
         for (int i = 0; i < 9; i++)
             array[i] = 9;
@@ -72,7 +72,7 @@ class MyArrayTest {
     }
 
     @Test
-    void solution_TheBiggestPossibleValue_Result()
+    public void solution_TheBiggestPossibleValue_Result()
     {
         int []array = new int[9];
         array[0] = 7;
@@ -88,7 +88,7 @@ class MyArrayTest {
     }
 
     @Test
-    void solution_TheSmallestPossibleValue_Result()
+    public void solution_TheSmallestPossibleValue_Result()
     {
         int []array = new int[9];
         array[0] = 7;
@@ -104,7 +104,7 @@ class MyArrayTest {
     }
 
     @Test
-    void solution_NormalValue_Result()
+    public void solution_NormalValue_Result()
     {
         int []array = new int[3];
         array[0] = 3;
@@ -114,7 +114,7 @@ class MyArrayTest {
     }
 
     @Test
-    void solution_NegativeNormalValue_Result()
+    public void solution_NegativeNormalValue_Result()
     {
         int []array = new int[3];
         array[0] = 3;

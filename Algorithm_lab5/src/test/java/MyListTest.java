@@ -1,6 +1,6 @@
 package com.company;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +10,10 @@ import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
-class MyListTest {
+public class MyListTest {
 
     @Test
-    void solution_NullList_ThrownException() {
+    public void solution_NullList_ThrownException() {
         NullPointerException exception = assertThrows(NullPointerException.class, () -> {
             MyList.solution(null);
         });
@@ -21,7 +21,7 @@ class MyListTest {
     }
 
     @Test
-    void solution_EmptyList_ThrownException() {
+    public void solution_EmptyList_ThrownException() {
         List<Integer> list = new ArrayList<>();
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             MyList.solution(list);
@@ -30,7 +30,7 @@ class MyListTest {
     }
 
     @Test
-    void solution_ToBigList_ThrownException(){
+    public void solution_ToBigList_ThrownException(){
         List<Integer> list = new ArrayList<>();
         for(int i = 0; i <= 10e5; i++)
             list.add(0);
@@ -41,35 +41,35 @@ class MyListTest {
     }
 
     @Test
-    void solution_MinValue_Result(){
+    public void solution_MinValue_Result(){
         List<Integer> list = new ArrayList<>();
         list.add((int)-10e6);
         assertEquals(1, MyList.solution(list));
     }
 
     @Test
-    void solution_MaxValue_Result(){
+    public void solution_MaxValue_Result(){
         List<Integer> list = new ArrayList<>();
         list.add((int)10e6);
         assertEquals(1, MyList.solution(list));
     }
 
     @Test
-    void solution_OnePositiveElementList_Result(){
+    public void solution_OnePositiveElementList_Result(){
         List<Integer> list = new ArrayList<>();
         list.add(342);
         assertEquals(1, MyList.solution(list));
     }
 
     @Test
-    void solution_OneNegativeElementList_Result(){
+    public void solution_OneNegativeElementList_Result(){
         List<Integer> list = new ArrayList<>();
         list.add(-432);
         assertEquals(1, MyList.solution(list));
     }
 
     @Test
-    void solution_PositiveElementsList_Result()
+    public void solution_PositiveElementsList_Result()
     {
         List<Integer> list = new ArrayList<>();
         list.add(4);
@@ -86,7 +86,7 @@ class MyListTest {
     }
 
     @Test
-    void solution_NegativeElementsList_Result()
+    public void solution_NegativeElementsList_Result()
     {
         List<Integer> list = new ArrayList<>();
         list.add(-4);
@@ -103,7 +103,7 @@ class MyListTest {
     }
 
     @Test
-    void solution_TenZeroAndRandomElementsList_Result()
+    public void solution_TenZeroAndRandomElementsList_Result()
     {
         List<Integer> list = new ArrayList<>();
         list.add(4);
@@ -130,14 +130,11 @@ class MyListTest {
     }
 
     @Test
-    void solution_From1to10e5List_Result()
+    public void solution_From1to10e5List_Result()
     {
         List<Integer> list = new ArrayList<>();
         for(int i = 1; i <= 100000; i++)
             list.add(i);
         assertEquals(100001, MyList.solution(list));
     }
-
-
-
 }

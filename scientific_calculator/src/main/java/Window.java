@@ -6,6 +6,7 @@ import javax.swing.event.*;
 import com.intellij.uiDesigner.core.*;
 import org.mariuszgromada.math.mxparser.*;
 import javax.swing.DefaultListModel;
+
 /*
  * Created by JFormDesigner on Sun Mar 18 23:10:50 CET 2018
  */
@@ -18,6 +19,7 @@ import javax.swing.DefaultListModel;
 public class Window extends JFrame {
 
     private String lastTyping;
+    private String lastResult;
     public Window() {
         initComponents();
     }
@@ -28,14 +30,18 @@ public class Window extends JFrame {
         Expression exp = new Expression(lastTyping);
         if(exp.checkSyntax())
         {
-            String result = MessageFormat.format("{0} = {1}\n----\n",textField1.getText(), exp.calculate());
+            lastResult = MessageFormat.format("{0}",exp.calculate());
+            String result = MessageFormat.format("{0} = {1}\n----\n",textField1.getText(), lastResult);
+
             textArea1.append(result);
             textField1.setText(null);
         }
         else{
             JOptionPane.showMessageDialog(null, "Syntax error" +
                             "", "Scientific calulator",
-                    JOptionPane.ERROR_MESSAGE);}
+                    JOptionPane.ERROR_MESSAGE);
+                    textField1.requestFocus();
+        }
         textField1.selectAll();
 
     }
@@ -52,13 +58,7 @@ public class Window extends JFrame {
         evaluate();
     }
 
-    private void list1ValueChanged(ListSelectionEvent e) {
-        ListSelectionModel lsm = (ListSelectionModel)e.getSource();
-        if (!e.getValueIsAdjusting()) {
-            // code here
-        }
-        System.exit(0);
-    }
+
 
     private void textField1KeyPressed(KeyEvent e) {
         if(e.getKeyCode() == 38)
@@ -67,6 +67,24 @@ public class Window extends JFrame {
         if(e.getKeyChar() == '\n')
             evaluate();
 
+    }
+
+    private void list1MouseClicked(MouseEvent e) {
+        if(e.getClickCount() == 2)
+        {
+            FunctionName selectedItem = (FunctionName) list1.getSelectedValue();
+            if(selectedItem.getParserName().equals("Last result")) {
+                textField1.setText(lastResult);
+                return;
+            }
+
+            String tmp = textField1.getText();
+            tmp += selectedItem.getParserName();
+            textField1.setText(tmp);
+            textField1.requestFocus();
+            textField1.setCaretPosition(textField1.getDocument().getLength()-1);
+
+        }
     }
 
 
@@ -147,6 +165,12 @@ public class Window extends JFrame {
                     list1ValueChanged(e);
                 }
             });
+            list1.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    list1MouseClicked(e);
+                }
+            });
             scrollPane1.setViewportView(list1);
         }
         contentPane.add(scrollPane1, new GridConstraints(0, 1, 1, 1,
@@ -192,16 +216,22 @@ public class Window extends JFrame {
         listModel.addElement(new FunctionName("Cosinus", "cos()"));
         listModel.addElement(new FunctionName("Tangens", "tg()"));
         listModel.addElement(new FunctionName("Cotangens", "ctg()"));
-        listModel.addElement(new FunctionName("Logarithm", "lg()"));
-
-
-        list1 = new JList<FunctionName>(listModel);
+        listModel.addElement(new FunctionName("Logarithm", "ln()"));
+        listModel.addElement(new FunctionName("Pi number", "pi"));
+        listModel.addElement(new FunctionName("Euler number", "e"));
+        listModel.addElement(new FunctionName("Golden ratio", "[phi]"));
+        listModel.addElement(new FunctionName("Modulo function", "#"));
+        listModel.addElement(new FunctionName("Exponentiation", "^"));
+        listModel.addElement(new FunctionName("Factorial", "!"));
+        listModel.addElement(new FunctionName("Last result", "Last result"));
+        //list1 = new JList<FunctionName>(listModel);
+        list1.setModel(listModel);
 
 
         scrollPane1.add(list1);
         scrollPane1.setViewportView(list1);
 
-        lastTyping = "0";
+
 
     }
 

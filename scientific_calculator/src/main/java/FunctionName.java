@@ -12,4 +12,9 @@ public class FunctionName {
     {
         return name;
     }
+
+    String getParserName()
+    {
+        return parserName;
+    }
 }

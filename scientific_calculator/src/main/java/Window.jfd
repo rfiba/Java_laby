@@ -27,9 +27,9 @@ new FormModel {
 					name: "list1"
 					"selectionMode": 0
 					addEvent( new FormEvent( "javax.swing.event.ListSelectionListener", "valueChanged", "list1ValueChanged", true ) )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "list1MouseClicked", true ) )
 				} )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-				"column": 1
 				"hSizePolicy": 0
 				"useParentLayout": true
 				"preferredSize": new java.awt.Dimension( 50, -1 )
@@ -38,6 +38,7 @@ new FormModel {
 				"minimumSize": new java.awt.Dimension( 50, -1 )
 				"vSizePolicy": 0
 				"fill": 2
+				"column": 1
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textField1"
@@ -54,8 +55,8 @@ new FormModel {
 				"text": "Evaluate"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-				"column": 1
 				"row": 1
+				"column": 1
 			} )
 			menuBar: new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
 				name: "menuBar1"
