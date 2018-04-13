@@ -1,5 +1,9 @@
 package sample;
 
+import static java.lang.Math.abs;
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+
 public class Equation {
     public static boolean calc(double x, double y){
 
