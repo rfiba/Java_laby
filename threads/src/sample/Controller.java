@@ -9,12 +9,14 @@ public class Controller {
     @FXML
     private Canvas canvas;
 
+    private DrawerTask task;
+
     @FXML
     private void handleRunBtnAction(){
-        GraphicsContext gc =
-                canvas.getGraphicsContext2D(); drawShapes(gc);
+        task = new DrawerTask();
+        new Thread(task).start();
+        // inne polecenia wykonywane w głównym wątku
     }
-
     private void drawShapes(GraphicsContext gc)
     { gc.setFill(Color.BLUEVIOLET);
         gc.fillRect(gc.getCanvas().getLayoutX(),
