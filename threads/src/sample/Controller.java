@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -13,10 +15,22 @@ public class Controller {
 
     @FXML
     private void handleRunBtnAction(){
-        task = new DrawerTask();
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        task = new DrawerTask(gc);
+        task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+                int var = (int) task.getValue();
+            }
+        });
         new Thread(task).start();
-        // inne polecenia wykonywane w głównym wątku
     }
+
+    @FXML
+    private void handleStopBtnAction(){
+        task.cancel();
+    }
+
     private void drawShapes(GraphicsContext gc)
     { gc.setFill(Color.BLUEVIOLET);
         gc.fillRect(gc.getCanvas().getLayoutX(),
