@@ -13,11 +13,16 @@ public class DrawerTask extends Task {
     private int MIN = -8;
     private int MAX = 8;
     private Random random;
+    private PointListner listener;
 
     DrawerTask(GraphicsContext toAdd){
         gc = toAdd;
         numberOfPoints = 100;
         random = new Random();
+    }
+
+    public synchronized void addListener(PointListner listenerToAdd) {
+        listener = listenerToAdd;
     }
 
     @Override
@@ -27,13 +32,17 @@ public class DrawerTask extends Task {
             double x = MIN + (MAX - MIN) * random.nextDouble();
             double y = MIN + (MAX - MIN) * random.nextDouble();
             System.out.println(Equation.calc(x,y));
+            listener.getPoint(new PointEvent(x,y,Equation.calc(x,y)));
             updateProgress(i, numberOfPoints);
 
-            if(i == numberOfPoints)
+            if(i == numberOfPoints) {
+                listener.getResult(new PointEvent(1));
                 break;
-            if(isCancelled())
+            }
+            if(isCancelled()) {
+                listener.getResult(new PointEvent(1));
                 break;
-            i++;
+            }i++;
         }
         return null;
     }

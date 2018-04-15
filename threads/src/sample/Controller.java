@@ -8,7 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.paint.Color;
 
-public class Controller {
+public class Controller implements PointListner{
     @FXML
     private Canvas canvas;
 
@@ -21,6 +21,7 @@ public class Controller {
     private void handleRunBtnAction(){
         GraphicsContext gc = canvas.getGraphicsContext2D();
         task = new DrawerTask(gc);
+        task.addListener(this);
         task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
             @Override
             public void handle(WorkerStateEvent event) {
@@ -42,5 +43,14 @@ public class Controller {
                 gc.getCanvas().getLayoutY(),
                 gc.getCanvas().getWidth(),
                 gc.getCanvas().getHeight());
+    }
+
+    @Override
+    public void getResult(PointEvent e) {
+        System.out.println("Wynik");
+    }
+
+    @Override
+    public void getPoint(PointEvent e) {
     }
 }
