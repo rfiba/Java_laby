@@ -22,14 +22,18 @@ public class DrawerTask extends Task {
 
     @Override
     protected Object call() throws Exception {
+        int i = 0;
         while(true){
-            for (int i = 0; i < numberOfPoints; i++) {
-                double x = MIN + (MAX - MIN) * random.nextDouble();
-                double y = MIN + (MAX - MIN) * random.nextDouble();
-                System.out.println(Equation.calc(x,y));
+            double x = MIN + (MAX - MIN) * random.nextDouble();
+            double y = MIN + (MAX - MIN) * random.nextDouble();
+            System.out.println(Equation.calc(x,y));
+            updateProgress(i, numberOfPoints);
 
-            }
-            if(isCancelled()) break;
+            if(i == numberOfPoints)
+                break;
+            if(isCancelled())
+                break;
+            i++;
         }
         return null;
     }

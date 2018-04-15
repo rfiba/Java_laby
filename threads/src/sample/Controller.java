@@ -5,11 +5,15 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.paint.Color;
 
 public class Controller {
     @FXML
     private Canvas canvas;
+
+    @FXML
+    private ProgressBar progressBar;
 
     private DrawerTask task;
 
@@ -23,6 +27,7 @@ public class Controller {
                 int var = (int) task.getValue();
             }
         });
+        progressBar.progressProperty().bind(task.progressProperty());
         new Thread(task).start();
     }
 
