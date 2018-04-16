@@ -21,7 +21,7 @@
          <children>
             <Button layoutX="69.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleRunBtnAction" text="Run" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Button layoutX="69.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleStopBtnAction" text="Stop" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-            <TextField layoutX="15.0" layoutY="50.0" promptText="Number of points" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <TextField fx:id="textField" layoutX="15.0" layoutY="50.0" promptText="Number of points" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
             <TextArea fx:id="textArea" editable="false" layoutY="75.0" prefHeight="64.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>

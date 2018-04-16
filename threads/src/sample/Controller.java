@@ -8,6 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.paint.Color;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 import java.awt.*;
 
@@ -21,12 +22,16 @@ public class Controller implements PointListner{
     @FXML
     private TextArea textArea;
 
+    @FXML
+    private TextField textField;
+
     private DrawerTask task;
 
     @FXML
     private void handleRunBtnAction(){
+        int numberOfPoints = Integer.parseInt(textField.getText());
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        task = new DrawerTask(gc);
+        task = new DrawerTask(numberOfPoints);
         task.addListener(this);
         task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
             @Override
