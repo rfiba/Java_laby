@@ -39,10 +39,13 @@ public class DrawerTask extends Task {
                 listener.getResult(new PointEvent(1));
                 break;
             }
+
             if(isCancelled()) {
                 listener.getResult(new PointEvent(1));
                 break;
-            }i++;
+            }
+
+            i++;
         }
         return null;
     }

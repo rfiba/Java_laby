@@ -7,6 +7,9 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.paint.Color;
+import javafx.scene.control.TextArea;
+
+import java.awt.*;
 
 public class Controller implements PointListner{
     @FXML
@@ -14,6 +17,9 @@ public class Controller implements PointListner{
 
     @FXML
     private ProgressBar progressBar;
+
+    @FXML
+    private TextArea textArea;
 
     private DrawerTask task;
 
@@ -47,6 +53,7 @@ public class Controller implements PointListner{
 
     @Override
     public void getResult(PointEvent e) {
+        textArea.setText(Double.toString(e.getResult()));
         System.out.println("Wynik");
     }
 
