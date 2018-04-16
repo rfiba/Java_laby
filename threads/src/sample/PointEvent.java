@@ -3,7 +3,7 @@ package sample;
 public class PointEvent {
     private double x;
     private double y;
-    private double result;
+
     private boolean belongingness;
 
     public double getX() {
@@ -14,10 +14,6 @@ public class PointEvent {
         return y;
     }
 
-    public double getResult() {
-        return result;
-    }
-
     public boolean getBelongingness() {
         return belongingness;
     }
@@ -26,12 +22,7 @@ public class PointEvent {
         x = xToAdd;
         y = yToAdd;
         belongingness = belongingnessToAdd;
-        result = -1;
-    }
 
-    public PointEvent(double resultToAdd)
-    {
-        result = resultToAdd;
     }
 }
 

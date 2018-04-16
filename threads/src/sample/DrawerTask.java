@@ -41,17 +41,21 @@ public class DrawerTask extends Task {
 
             if(i == numberOfPoints) {
                 System.out.println(amountInTarget);
-                listener.getResult(new PointEvent((double)amountInTarget/256));
+                //listener.getResult(new PointEvent((double)amountInTarget/256));
+
                 break;
             }
 
             if(isCancelled()) {
-                listener.getResult(new PointEvent((double)amountInTarget/256));
+
+                //listener.getResult(new PointEvent((double)amountInTarget/256));
+                //return (double)amountInTarget/256;
                 break;
+
             }
 
             i++;
         }
-        return null;
+        return (double)amountInTarget/256;
     }
 }
