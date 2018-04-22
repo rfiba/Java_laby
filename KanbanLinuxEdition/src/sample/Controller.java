@@ -25,6 +25,7 @@ public class Controller implements Initializable{
     @FXML private ListView<Task> inProgress;
     @FXML private ListView<Task> done;
     private Main main;
+
     @FXML
     private void closeMenuItemEvent (ActionEvent event)
     {
@@ -33,7 +34,8 @@ public class Controller implements Initializable{
 
     @FXML
     private void buttonEvent(ActionEvent event)
-    { Parent root;
+    {
+        Parent root;
         try {
             root = FXMLLoader.load(getClass().getResource("TaskWindow.fxml"));
             Stage stage = new Stage();
@@ -60,7 +62,7 @@ public class Controller implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+
     }
 
     public void setMainApp(Main main){

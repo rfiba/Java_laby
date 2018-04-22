@@ -4,6 +4,7 @@ package sample;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import javafx.application.Platform;
@@ -13,23 +14,31 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import java.net.URL;
 import java.time.LocalDate;
 import java.lang.String;
+import java.util.ResourceBundle;
 
-public class TaskWindow{
+import static java.lang.System.exit;
+
+public class TaskWindow implements Initializable {
     private Main main;
     private Task task;
     @FXML private ComboBox<Priority> priority;
     @FXML private TextField title;
-    @FXML private LocalDate expirationDate;
-    @FXML private String description;
+    @FXML private DatePicker expirationDate;
+    @FXML private TextField description;
 
-    public void handleEditAction(ActionEvent actionEvent) {
-        task.setTitle(title.getText());
-        task.setPriority(priority.getValue());
-        task.setExpirationDate(expirationDate);
-        task.setDescription(description);
-        ((Stage) title.getScene().getWindow()).close();
+    @FXML
+    private void handleButtonAction(ActionEvent actionEvent) {
+        task = new Task(title.getText(), expirationDate.getValue(),priority.getValue(), description.getText());
+        ((Stage)priority.getScene().getWindow()).close();
+    }
+
+    @FXML
+    private void closeMenuItemEvent (ActionEvent event)
+    {
+        exit(0);
     }
 
     public void setMainApp(Main main){
@@ -38,9 +47,9 @@ public class TaskWindow{
             System.out.println("NULL");
         }
     }
-    @FXML
-    private void initialize(){
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         priority.setItems(FXCollections.observableArrayList(Priority.values()));
     }
-
 }
