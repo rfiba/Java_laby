@@ -31,7 +31,9 @@ public class TaskWindow implements Initializable {
 
     @FXML
     private void handleButtonAction(ActionEvent actionEvent) {
-        task = new Task(title.getText(), expirationDate.getValue(),priority.getValue(), description.getText());
+        //task = new Task(title.getText(), expirationDate.getValue(),priority.getValue(), description.getText());
+        //((Stage)priority.getScene().getWindow()).close();
+        main.setToDo(new Task(title.getText(), expirationDate.getValue(),priority.getValue(), description.getText()));
         ((Stage)priority.getScene().getWindow()).close();
     }
 
@@ -46,6 +48,15 @@ public class TaskWindow implements Initializable {
         if(main == null){
             System.out.println("NULL");
         }
+    }
+
+    public void setTaskToEdit(Task taskToEdit)
+    {
+        this.task = taskToEdit;
+        title.setText(taskToEdit.getTitle());
+        priority.setValue(taskToEdit.getPriority());
+        expirationDate.setValue(task.getExpirationDate());
+        description.setText(taskToEdit.getDescription());
     }
 
     @Override

@@ -35,18 +35,21 @@ public class Controller implements Initializable{
     @FXML
     private void buttonEvent(ActionEvent event)
     {
-        Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("TaskWindow.fxml"));
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("TaskWindow.fxml"));
+            AnchorPane rootLayout = loader.load();
             Stage stage = new Stage();
             stage.setTitle("My New Stage Title");
-            stage.setScene(new Scene(root, 600, 600));
+            stage.setScene(new Scene(rootLayout, 600, 600));
             stage.show();
-
+            TaskWindow newTaskWindow = loader.getController();
+            newTaskWindow.setMainApp(main);
         }
         catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     @FXML
